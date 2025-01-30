@@ -64,7 +64,7 @@
     
 </head>
 <body>
-    <h2>Welcome to the Magic Submission Form</h2>
+    <h1>Welcome to the Magic Submission Form</h1>
     
     <img id="headerImage" src="https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/magic%20logo.png" alt="Form Header">
 
@@ -177,6 +177,8 @@
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
             }).then(() => {
+                document.getElementById("subHeading").style.display = "none"; 
+                document.getElementById("formHeading").style.display = "none"; 
                 document.getElementById("customForm").style.display = "none";
                 
                 document.getElementById("responseMessage").innerText = "✅ Form submitted successfully!\n Please press this link: https://t.me/producerhelperbot and start a conversation with this bot on Telegram." ;
