@@ -153,7 +153,7 @@
         document.getElementById("genre").addEventListener("change", function() {
             let selectedGenre = this.value;
             
-            document.getElementById("headerImage").src = genreStyles[selectedGenre]?.image || "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/default.png";
+            document.getElementById("headerImage").src = genreStyles[selectedGenre]?.image || "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/magic%20logo.png";
 
             document.body.style.backgroundColor = genreStyles[selectedGenre]?.bgColor || "black";
         });
@@ -171,7 +171,7 @@
                 telegramusername: document.getElementById("telegramusername").value
             };
 
-            fetch("https://script.google.com/macros/s/AKfycbyxXqQS9_d-rX5SZJyz3mwo5Mtl_l4Q1udj31wsTETBUxKcZIVA17LUlbrs5fOwRhz2/exec", {
+            fetch("https://script.google.com/macros/s/AKfycbwaILAbNJRJKPHFDgbz3d1llanY4-Rutq14Ud1uRpuR0W2IPqScr_oRxXhRPdQM2LZ3/exec", {
                 method: "POST",
                 mode: "no-cors",
                 headers: { "Content-Type": "application/json" },
@@ -179,7 +179,7 @@
             }).then(() => {
                 document.getElementById("responseMessage").innerText = "✅ Form submitted successfully!";
                 document.getElementById("customForm").reset();
-                document.getElementById("headerImage").src = "https://raw.githubusercontent.com/WEJesus/forms/main/car%20playlist%20image.png"; 
+                document.getElementById("headerImage").src = "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/magic%20logo.png"; 
             }).catch(error => {
                 document.getElementById("responseMessage").innerText = "❌ Error submitting form. Try again.";
             });
