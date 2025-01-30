@@ -194,9 +194,9 @@
                 // Dynamically add Telegram Login Widget script
                 let script = document.createElement("script");
                 script.src = "https://telegram.org/js/telegram-widget.js?7";
-                script.setAttribute("data-telegram-login", "YourBotUsername");  // Replace with your bot username
+                script.setAttribute("data-telegram-login", "producerhelperbot");  
                 script.setAttribute("data-size", "large");
-                script.setAttribute("data-auth-url", "https://yourwebsite.com/auth"); // Replace with your domain
+                script.setAttribute("data-auth-url", "https://wejesus.github.io/Spotify-forms/"); 
                 script.setAttribute("data-request-access", "write");
                 script.async = true;
 
@@ -205,7 +205,7 @@
                 // Handle Telegram login redirect
                 window.TelegramLoginWidget = function (user) {
                     console.log("User Data:", user);
-                    window.location.href = "https://t.me/YourBotUsername"; // Replace with your bot username
+                    window.location.href = "https://t.me/producerhelperbot"; // Replace with your bot username
                 };
 
             }).catch(error => {
