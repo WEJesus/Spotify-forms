@@ -218,7 +218,23 @@
                 document.getElementById("formHeading").style.display = "none"; 
                 document.getElementById("customForm").style.display = "none";
                 
-                document.getElementById("responseMessage").innerText = "✅ Form submitted successfully!\n Please press this link: https://t.me/producerhelperbot and start a conversation with this bot on Telegram." ;
+                document.getElementById("responseMessage").innerHTML = `
+                    <h2>✅ Form submitted successfully!</h2>
+                    <p>Click the button below to start a conversation with our bot on Telegram.</p>
+                    <a href="https://t.me/producerhelperbot" target="_blank">
+                        <button style="
+                            background-color: #0088cc;
+                            color: white;
+                            padding: 12px 20px;
+                            font-size: 16px;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            margin-top: 10px;">
+                            💬 Chat with Our Bot
+                        </button>
+                    </a>
+                `;
 
                 document.getElementById("headerImage").src = "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/magic%20logo.png"; 
             }).catch(error => {
