@@ -177,8 +177,10 @@
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
             }).then(() => {
-                document.getElementById("responseMessage").innerText = "✅ Form submitted successfully!";
-                document.getElementById("customForm").reset();
+                document.getElementById("customForm").style.display = "none";
+                
+                document.getElementById("responseMessage").innerText = "✅ Form submitted successfully!\n Please press this link: https://t.me/producerhelperbot and start a conversation with this bot on Telegram." ;
+
                 document.getElementById("headerImage").src = "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/magic%20logo.png"; 
             }).catch(error => {
                 document.getElementById("responseMessage").innerText = "❌ Error submitting form. Try again.";
