@@ -103,20 +103,46 @@
 
     <script>
         // Genre to Image Mapping
-        const genreImages = {
-            "Deep House": "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/deep%20house%20playlist%20image.png",
-            "Phonk": "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/Phonk%20playlist%20image.png",
-            "HardStyle": "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/Hardstyle%20playlist%20image.png",
-            "Afro House": "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/afro%20house%20playylist%20image.png",
-            "Reggaeton": "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/Reggaeton%20playlist%20image.png",
-            "HyperTechno": "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/Hypertechno%20playlist%20image.png",
+        // Genre to Image & Background Color Mapping
+// Genre to Image & Background Color Mapping
+        const genreStyles = {
+            "Deep House": {
+                image: "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/deep%20house%20playlist%20image.png",
+                bgColor: "#1a1a2e" // Dark Blue
+            },
+            "Phonk": {
+                image: "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/Phonk%20playlist%20image.png",
+                bgColor: "#660000" // Dark Red
+            },
+            "HardStyle": {
+                image: "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/Hardstyle%20playlist%20image.png",
+                bgColor: "#222222" // Dark Gray
+            },
+            "Afro House": {
+                image: "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/afro%20house%20playlist%20image.png",
+                bgColor: "#003300" // Dark Green
+            },
+            "Reggaeton": {
+                image: "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/Reggaeton%20playlist%20image.png",
+                bgColor: "#ff9900" // Orange
+            },
+            "HyperTechno": {
+                image: "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/Hypertechno%20playlist%20image.png",
+                bgColor: "#000066" // Deep Blue
+            }
         };
 
-        // Change image when genre is selected
+        // Change image & background when genre is selected
         document.getElementById("genre").addEventListener("change", function() {
             let selectedGenre = this.value;
-            document.getElementById("headerImage").src = genreImages[selectedGenre] || "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/magic%20logo.png";
+            
+            // Change image
+            document.getElementById("headerImage").src = genreStyles[selectedGenre]?.image || "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/default.png";
+
+            // Change background color
+            document.body.style.backgroundColor = genreStyles[selectedGenre]?.bgColor || "black";
         });
+
 
         // Form Submission
         document.getElementById("customForm").addEventListener("submit", function(event) {
