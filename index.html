@@ -35,15 +35,10 @@
     </style>
 </head>
 <body>
-    <h2>Select an Option to Change the Header</h2>
-    <select id="imageSelector">
-        <option value="https://raw.githubusercontent.com/WEJesus/forms/main/car%20playlist%20image.png">Default</option>
-        <option value="https://raw.githubusercontent.com/WEJesus/forms/main/deep%20house%20playlist%20image.png">Option 1</option>
-        <option value="https://raw.githubusercontent.com/WEJesus/forms/main/Phonk%20playlist%20image.png">Option 2</option>
-    </select>
-
-    <br><br>
-    <img id="headerImage" src="https://raw.githubusercontent.com/WEJesus/forms/main/car%20playlist%20image.png" alt="Form Header">
+    <h2>Select Your Favorite Genre</h2>
+    
+    <!-- Header Image -->
+    <img id="headerImage" src="https://raw.githubusercontent.com/WEJesus/forms/main/default.png" alt="Form Header">
 
     <h2>Submit Your Details</h2>
     <form id="customForm">
@@ -59,6 +54,7 @@
             <option value="Rock">Rock</option>
             <option value="Hip-Hop">Hip-Hop</option>
             <option value="Electronic">Electronic</option>
+            <option value="Phonk">Phonk</option>
         </select>
 
         <label for="message">Your Message:</label>
@@ -70,10 +66,19 @@
     <p id="responseMessage"></p>
 
     <script>
-        document.getElementById("imageSelector").addEventListener("change", function() {
-            document.getElementById("headerImage").src = this.value;
+        // Genre to Image Mapping
+        const genreImages = {
+            "Deep House": "https://raw.githubusercontent.com/WEJesus/forms/main/deep%20house%20playlist%20image.png",
+            "Phonk": "https://raw.githubusercontent.com/WEJesus/forms/main/Phonk%20playlist%20image.png",
+        };
+
+        // Change image when genre is selected
+        document.getElementById("genre").addEventListener("change", function() {
+            let selectedGenre = this.value;
+            document.getElementById("headerImage").src = genreImages[selectedGenre] || "https://raw.githubusercontent.com/WEJesus/forms/main/default.png";
         });
 
+        // Form Submission
         document.getElementById("customForm").addEventListener("submit", function(event) {
             event.preventDefault();
 
@@ -84,21 +89,20 @@
                 message: document.getElementById("message").value
             };
 
-            fetch("https://script.google.com/macros/s/AKfycbwmCSVtCIAk1Tz7eXE38ddii_O61yvFmGIUyXliteO6jFsj606I0q2BjwAIFwfC0g9D/exec", {
+            fetch("YOUR_GOOGLE_APPS_SCRIPT_URL", {
                 method: "POST",
                 mode: "no-cors",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
-            }).then(response => {
-                console.log("Response received:", response);
+            }).then(() => {
                 document.getElementById("responseMessage").innerText = "✅ Form submitted successfully!";
                 document.getElementById("customForm").reset();
+                document.getElementById("headerImage").src = "https://raw.githubusercontent.com/WEJesus/forms/main/default.png"; // Reset image after submission
             }).catch(error => {
-                console.error("Fetch error:", error);
                 document.getElementById("responseMessage").innerText = "❌ Error submitting form. Try again.";
             });
         });
-
     </script>
 </body>
 </html>
+
