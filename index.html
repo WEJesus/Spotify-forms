@@ -12,7 +12,7 @@
         }
         #headerImage {
             width: 100%;
-            max-width: 800px;
+            max-width: 500px;
             height: auto;
             margin-bottom: 10px;
         }
@@ -36,18 +36,21 @@
     </style>
 </head>
 <body>
-    <h2>Select Your Favorite Genre</h2>
+    <h2>Welcome to the Magic Submission Form</h2>
     
     <!-- Header Image -->
     <img id="headerImage" src="https://raw.githubusercontent.com/WEJesus/forms/main/car%20playlist%20image.png" alt="Form Header">
 
     <h2>Submit Your Details</h2>
     <form id="customForm">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required>
+        <label for="songtype">Is This An Original OR Cover Song?</label>
+        <select id="songtype" name="songtype">
+            <option value="ORIGINAL">ORIGINAL SONG (NO VOCAL SAMPLES ARE ALLOWED & VOCALS MUST BE EXCLUSIVE)</option>
+            <option value="COVER">COVER SONG (VOCALS MUST BE EXCLUSIVE)</option>
+        </select>
 
-        <label for="email">Your Email:</label>
-        <input type="email" id="email" name="email" required>
+        <label for="artistname">What is the Artist - Song Name?</label>
+        <input type="text" id="artistname" name="artistname" required>
 
         <label for="genre">Favorite Music Genre:</label>
         <select id="genre" name="genre">
@@ -56,8 +59,11 @@
             <option value="Phonk">Phonk</option>
         </select>
 
-        <label for="message">Your Message:</label>
-        <textarea id="message" name="message"></textarea>
+        <label for="songlink">Please Submit your Dropbox or Soundcloud Link</label>
+        <input type="text" id="songlink" name="songlink" required>
+
+        <label for="telegramusername">Please let me know your telegram number or telegram ID so we can notify if the song have been accepted or declined</label>
+        <input type="text" id="telegramusername" name="telegramusername" required>
 
         <button type="submit">Submit</button>
     </form>
@@ -82,13 +88,14 @@
             event.preventDefault();
 
             var formData = {
-                name: document.getElementById("name").value,
-                email: document.getElementById("email").value,
+                songtype: document.getElementById("songtype").value,
+                artistname: document.getElementById("artistname").value,
                 genre: document.getElementById("genre").value,
-                message: document.getElementById("message").value
+                songlink: document.getElementById("songlink").value,
+                telegramusername: document.getElementById("telegramusername").value
             };
 
-            fetch("YOUR_GOOGLE_APPS_SCRIPT_URL", {
+            fetch("https://script.google.com/macros/s/AKfycbwmCSVtCIAk1Tz7eXE38ddii_O61yvFmGIUyXliteO6jFsj606I0q2BjwAIFwfC0g9D/exec", {
                 method: "POST",
                 mode: "no-cors",
                 headers: { "Content-Type": "application/json" },
