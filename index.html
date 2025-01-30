@@ -89,13 +89,16 @@
                 mode: "no-cors",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
-            }).then(() => {
+            }).then(response => {
+                console.log("Response received:", response);
                 document.getElementById("responseMessage").innerText = "✅ Form submitted successfully!";
                 document.getElementById("customForm").reset();
             }).catch(error => {
+                console.error("Fetch error:", error);
                 document.getElementById("responseMessage").innerText = "❌ Error submitting form. Try again.";
             });
         });
+
     </script>
 </body>
 </html>
