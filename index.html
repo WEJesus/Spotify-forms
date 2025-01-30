@@ -38,8 +38,7 @@
 <body>
     <h2>Welcome to the Magic Submission Form</h2>
     
-    <!-- Header Image -->
-    <img id="headerImage" src="https://raw.githubusercontent.com/WEJesus/forms/main/car%20playlist%20image.png" alt="Form Header">
+    <img id="headerImage" src="https://raw.githubusercontent.com/WEJesus/Spotify-forms/blob/main/images/magic%20logo.png" alt="Form Header">
 
     <p style="font-size: 16px; color: #555; max-width: 600px; margin: auto;">
         ***PLEASE MAKE SURE YOU HAVE CHECKED THE VIBE & THE STYLE OF THE SONGS IN THE PLAYLIST. SONGS THAT ARE NOT IN THE SAME STYLE WILL BE IMMEDIATELY DECLINED & REJECTED. WE REVIEW ALL THE DEMOS ON SUNDAY/MONDAY EVERY WEEK. 
@@ -62,6 +61,10 @@
             <option value=""></option>
             <option value="Deep House">Deep House</option>
             <option value="Phonk">Phonk</option>
+            <option value="HardStyle">HardStyle</option>
+            <option value="Afro House">Afro House</option>
+            <option value="Reggaeton">Reggaeton</option>
+            <option value="HyperTechno">Deep House</option>
         </select>
 
         <label for="songlink">Please Submit your Dropbox or Soundcloud Link</label>
@@ -78,14 +81,18 @@
     <script>
         // Genre to Image Mapping
         const genreImages = {
-            "Deep House": "https://raw.githubusercontent.com/WEJesus/forms/main/deep%20house%20playlist%20image.png",
-            "Phonk": "https://raw.githubusercontent.com/WEJesus/forms/main/Phonk%20playlist%20image.png",
+            "Deep House": "https://raw.githubusercontent.com/WEJesus/Spotify-forms/blob/main/images/deep%20house%20playlist%20image.png",
+            "Phonk": "https://raw.githubusercontent.com/WEJesus/Spotify-forms/blob/main/images/Phonk%20playlist%20image.png",
+            "HardStyle": "https://raw.githubusercontent.com/WEJesus/Spotify-forms/blob/main/images/Hardstyle%20playlist%20image.png",
+            "Afro House": "https://raw.githubusercontent.com/WEJesus/forms/Spotify-forms/blob/main/images/afro%20house%20playylist%20image.png",
+            "Reggaeton": "https://raw.githubusercontent.com/WEJesus/Spotify-forms/blob/main/images/Reggaeton%20playlist%20image.png",
+            "HyperTechno": "https://raw.githubusercontent.com/WEJesus/Spotify-forms/blob/main/images/Hypertechno%20playlist%20image.png",
         };
 
         // Change image when genre is selected
         document.getElementById("genre").addEventListener("change", function() {
             let selectedGenre = this.value;
-            document.getElementById("headerImage").src = genreImages[selectedGenre] || "https://raw.githubusercontent.com/WEJesus/forms/main/car%20playlist%20image.png";
+            document.getElementById("headerImage").src = genreImages[selectedGenre] || "https://raw.githubusercontent.com/WEJesus/Spotify-forms/blob/main/images/magic%20logo.png";
         });
 
         // Form Submission
