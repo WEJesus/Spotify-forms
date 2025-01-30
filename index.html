@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Google Form</title>
+    <title>Custom HTML Form with Google Sheets</title>
     <style>
         body {
             text-align: center;
@@ -15,10 +15,22 @@
             height: auto;
             margin-bottom: 10px;
         }
-        iframe {
+        form {
+            max-width: 500px;
+            margin: auto;
+            text-align: left;
+        }
+        label, input, select, textarea {
+            display: block;
             width: 100%;
-            height: 800px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
             border: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -33,11 +45,56 @@
     <br><br>
     <img id="headerImage" src="https://raw.githubusercontent.com/WEJesus/forms/main/car%20playlist%20image.png" alt="Form Header">
 
-    <iframe id="googleForm" src="https://docs.google.com/forms/d/e/1FAIpQLScuAEK38QsgIHmGZEj4Y2NbUUyn0NFRtM6w09z3jGUVlE0dvA/viewform?embedded=true"></iframe>
+    <h2>Submit Your Details</h2>
+    <form id="customForm">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="genre">Favorite Music Genre:</label>
+        <select id="genre" name="genre">
+            <option value="Pop">Pop</option>
+            <option value="Rock">Rock</option>
+            <option value="Hip-Hop">Hip-Hop</option>
+            <option value="Electronic">Electronic</option>
+        </select>
+
+        <label for="message">Your Message:</label>
+        <textarea id="message" name="message"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="responseMessage"></p>
 
     <script>
         document.getElementById("imageSelector").addEventListener("change", function() {
             document.getElementById("headerImage").src = this.value;
+        });
+
+        document.getElementById("customForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var formData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                genre: document.getElementById("genre").value,
+                message: document.getElementById("message").value
+            };
+
+            fetch("https://script.google.com/macros/s/AKfycbwmCSVtCIAk1Tz7eXE38ddii_O61yvFmGIUyXliteO6jFsj606I0q2BjwAIFwfC0g9D/exec", {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
+            }).then(() => {
+                document.getElementById("responseMessage").innerText = "✅ Form submitted successfully!";
+                document.getElementById("customForm").reset();
+            }).catch(error => {
+                document.getElementById("responseMessage").innerText = "❌ Error submitting form. Try again.";
+            });
         });
     </script>
 </body>
