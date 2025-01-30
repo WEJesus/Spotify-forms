@@ -51,7 +51,6 @@
             width: 100%;
         }
     
-        /* Change button hover effect */
         button:hover {
             background-color: #218838;
         }
@@ -105,9 +104,6 @@
     <p id="responseMessage"></p>
 
     <script>
-        // Genre to Image Mapping
-        // Genre to Image & Background Color Mapping
-// Genre to Image & Background Color Mapping
         const genreStyles = {
             "Deep House": {
                 image: "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/deep%20house%20playlist%20image.png",
@@ -147,14 +143,12 @@
             }
         };
 
-        // Change image & background when genre is selected
+        
         document.getElementById("genre").addEventListener("change", function() {
             let selectedGenre = this.value;
             
-            // Change image
             document.getElementById("headerImage").src = genreStyles[selectedGenre]?.image || "https://raw.githubusercontent.com/WEJesus/Spotify-forms/main/images/default.png";
 
-            // Change background color
             document.body.style.backgroundColor = genreStyles[selectedGenre]?.bgColor || "black";
         });
 
